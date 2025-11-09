@@ -1,0 +1,49 @@
+﻿@model List<ClinicaPetCare.Models.Mascota>
+@{
+	ViewData["Title"] = "Lista de mascotas";
+}
+
+
+<h2>Lista de mascotas</h2>
+
+
+@if (TempData["Mensaje"] != null)
+{
+	<div class="alert alert-success">@TempData["Mensaje"]</div>
+}
+
+
+<p>
+	<a class="btn btn-primary" href="@Url.Action("Registrar", "Mascota")">Registrar nueva mascota</a>
+</p>
+
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Nombre</th>
+			<th>Especie</th>
+			<th>Raza</th>
+			<th>Edad</th>
+			<th>Dueño</th>
+			<th>Teléfono</th>
+			<th>Fecha ingreso</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var m in Model)
+		{
+			<tr>
+				<td>@m.Id</td>
+				<td>@m.Nombre</td>
+				<td>@m.Especie</td>
+				<td>@m.Raza</td>
+				<td>@m.Edad</td>
+				<td>@m.NombreDueño</td>
+				<td>@m.TelefonoDueño</td>
+				<td>@m.FechaIngreso.ToString("yyyy-MM-dd")</td>
+			</tr>
+		}
+	</tbody>
+</table>
